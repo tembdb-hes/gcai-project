@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+    
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    text-align: center;
+}
+
+.nav-menu{
+	background-color: lightgray; 
+	height :  50px; 
+	width  :  100% ;
+    display:  flex;
+	justify-content: flex-end;
+	flex-direction: column-reverse;
+	
+		
+}
+
+.nav-text{
+	
+	font-size: 14px;
+	
+}
+
+nav{
+	
+transform: translate(100px, 10%);	
+	
+}
+
+main {
+    padding: 2rem;
+    text-align: center;
+}
+
+
+
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+button:hover {
+    background-color: #0056b3;
+}
+ 
+.login-btn {
+	        display : block;
+	        margin-left: 50%;
+	        margin-right: auto;
+	        width : 43%;
+
+
+	
+} 
+
+input {
+        width : 90%;
+}
+  
+  
+.form-label{
+	
+	font-size   : 14px;
+	font-weight : regular;
+	
+}    
+    
+    </style>
+</head>
+<body>
+	<div class="nav-menu">
+	  <nav >
+         <b>GCAI</b>
+     </nav>
+    
+    </div>
+    <header>
+        <h1>Login</h1>
+    </header>
+    <main>
+	    <div class="login-container">
+        <form action="/login" method="post">
+            <label  class="form-label" for="username">Username:</label>
+            <input  type="text" id="username" name="username" required><br><br>
+            <label  class="form-label" for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button class="login-btn" type="submit">Login</button>
+        </form>
+        </div>
+    </main>
+
+    
+</body>
+</html>
