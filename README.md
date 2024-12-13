@@ -216,7 +216,7 @@ The frontend is designed for simplicity and responsiveness:
   *Figure 2: Real-time gesture recognition interface example (Zoom In)*
   
   ![Gesture Recognition](zoom_out_example.png)  
-  *Figure 2: Real-time gesture recognition interface example (Zoom Out)*
+  *Figure 3: Real-time gesture recognition interface example (Zoom Out)*
 
   **Image Citation**
   @data{DVN/3JDZCT_2023,
