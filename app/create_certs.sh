@@ -1,3 +1,5 @@
+##Create self signed SSL Certificate for more secure access
+
 openssl genpkey -algorithm RSA -out localhost.key -aes256
 
 ##Create cert signing request, USE localhost when prompted for Common Name (CN)
