@@ -101,7 +101,7 @@ The locations of several key files and folders/directories is configured via the
 
 1. Clone the repository:
    ```bash
-      git clone [https://github.com/gcai_team.git](https://github.com/GCAI-team/gcai-project.git)
+      git clone https://github.com/GCAI-team/gcai-project.git
    ```
 
 2. Set up the virtual environment:
