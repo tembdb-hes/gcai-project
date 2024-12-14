@@ -1,5 +1,5 @@
 ##############################################
-# Created By Edwin Tembo, Anjay Sukuru, Jayden Chen
+# Created By Edwin Tembo, Anjay Sukuru
 ##############################################
 
 import contextlib
