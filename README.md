@@ -88,6 +88,7 @@ The locations of several key files and folders/directories is configured via the
 - **Hardware**
   - Raspberry Pi 5.
   - 1 Camera (USB or Raspberry Pi Camera Module) for image transformations, 2 Cameras for Live Video Streaming.
+  - Display Monitor for Viewing Images. 
 
 - **Software**
   - Python 3.11.2+
@@ -133,7 +134,7 @@ The locations of several key files and folders/directories is configured via the
 
    **Setting Environment Variables**
 
-        Configure the following environment variables to customize application behavior:
+            Configure the following environment variables to customize application behavior:
 
    **Virtual Environment**
 
@@ -172,13 +173,13 @@ The locations of several key files and folders/directories is configured via the
             SSL_KEYFILE_PATH: Path to the SSL key file.
             SSL_CERTFILE_PATH: Path to the SSL certificate file.
 
-6. Run the application:
+7. Run the application:
    ```bash
    ./startup.sh
    ```
    
 
-7. Access the frontend in your browser:
+8. Access the frontend in your browser:
    - Default URL: [https://localhost:8000/login](https://localhost:8000/login) (if SSL is enabled otherwise use http).
    - Change the port 8000 in startup.sh if needed.
 
@@ -227,6 +228,13 @@ The frontend is designed for simplicity and responsiveness:
         doi = {10.7910/DVN/3JDZCT},
         url = {https://doi.org/10.7910/DVN/3JDZCT}
         }
+
+---
+
+## Sample Hardware Setup
+
+![Gesture Recognition](sample_hardware.jpg)  
+  *Figure 4: Sample Hardware Confniguration with Raspberry Pi 5 8 GB RAM, Display, and USB Camera.*
 
 ---
 
