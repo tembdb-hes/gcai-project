@@ -402,7 +402,7 @@ async def stop_stream( clear_state  : str = 'N',
 
 		
 
-
+##endpoint used for testing
 @app.get("/datastream")
 async def render_ds_page(access_token  : str = Depends(APIKeyCookie(name=TOKEN_COOKIE_NAME)) , 
                          username      : str = Depends(APIKeyCookie(name="username")),
