@@ -1,4 +1,3 @@
-
 # Hand Gesture Recognition Application
 
 This repository contains a Hand Gesture Recognition application designed for deployment on **Raspberry Pi 5** or other compatible device. The application leverages the **MediaPipe Handlandmarker model** to detect hand landmarks and a custom-trained **TensorFlow Lite** (TFLite) model for gesture classification. It features a **FastAPI backend** and a **JavaScript/HTML/CSS frontend**, offering an intuitive and responsive user interface. Designed and tested on **Linux Debian 12 (Bookworm)**, it supports SSL for secure communication.
