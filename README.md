@@ -248,6 +248,12 @@ This application incorporates the MediaPipe library, licensed under the [Apache 
 
 ---
 
+## References
+
+This application incorporates several functionalities and organizational features from the [Kazuhito00/hand-gesture-recognition-using-mediapipe](https://github.com/Kazuhito00/hand-gesture-recognition-using-mediapipe) repository.
+
+---
+
 ## License
 
 This project is licensed under the [Apache License 2.0](LICENSE). For details about MediaPipe, refer to its [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
