@@ -295,12 +295,13 @@ class ModelInference(InferenceModelParams):
 										   
                                        self.init_status_change  = 0
                                        self.kcl_arr= np.delete(self.kcl_arr ,np.where((self.kcl_arr == 'two_fingers_left') | (self.kcl_arr =='two_fingers_right')))
-                                       ### remove all two_finger counts 
-                                           									   
+                                       
+                                   ##reset the transformation params        									   
                                    scale = None
                                    pos_x = None
                                    pos_y = None
-                                   
+
+				   ## Change inference status 					       
                                    if self.inference_status == 1 :
                                        scale,pos_x, pos_y = self.gen_scale_pos(pct_chg, pos_x_chg, pos_y_chg)
                                    
@@ -311,11 +312,12 @@ class ModelInference(InferenceModelParams):
                                        print(self.kcl_arr, "\n")
                                        print("inference status" , self.inference_status, "\n")
                                    
-                                   ##debug_image = draw_point_history(debug_image, self.point_history)
+                                   ## draw info on image 
                                    debug_image = draw_info(debug_image, fps, mode, number)
 
 			                       
-                                   if self.inference_status == 0:       
+                                   if self.inference_status == 0: 
+				       #save the output data
                                        out_data = {"scale"  : self.current_scale , 
                                                    "pos_x"  : self.current_pos_x, 
                                                    "pos_y"  : self.current_pos_y, 
@@ -327,6 +329,7 @@ class ModelInference(InferenceModelParams):
 
 											      }
                                    else:
+				       #save the ouptut data    
                                        out_data = {"scale" : scale , 
                                                    "pos_x" : pos_x , 
                                                    "pos_y" : pos_y, 
@@ -415,6 +418,9 @@ def select_mode(key, mode):
 
 
 def calc_bounding_rect(image, landmarks):
+    """
+     Bounding Box
+    """
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_array = np.empty((0, 2), int)
@@ -433,6 +439,9 @@ def calc_bounding_rect(image, landmarks):
 
 
 def calc_landmark_list(image, landmarks):
+    """
+     Collect and prepare landmarks
+    """
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point   = []
