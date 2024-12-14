@@ -6,7 +6,9 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from pydantic import BaseModel
 from typing import Optional
 
-
+"""
+Database schema models for user management
+"""
 
 class Base(DeclarativeBase):
 	pass
