@@ -21,11 +21,8 @@ import os
 
 
 """
-class AuthConstants:
-    SECRET_KEY  :str = os.environ.get("AUTH_ACCESS_SECRET")
-    ALGORITHM   :str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES : int= int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
-"""	
+Manage Authentication and User Security 
+"""
 
 
 # OAuth2 Scheme
