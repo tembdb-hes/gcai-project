@@ -24,7 +24,7 @@ from modelv1 import PointHistoryClassifier
 
 
 
-## TODO: switch ZOOM options in data, label and inference.py files 
+## gestures dictionary 
 gestures_dict = {
 "z_palm_facing_in_pull"       : { "gesture" : "Palm Facing In", "action": "Pan"},
 "z_palm_facing_in_pull_left"  : { "gesture" :"Palm Facing In", "action": "Pan"},
@@ -49,7 +49,8 @@ gestures_dict = {
 "thumbs_up_right"             : { "gesture" :"Thumbs Up","action": "n/a"},
 "thumbs_up_left"              : { "gesture" :"Thumbs Up","action": "n/a"}
 }
-    
+
+##Access dictionary using dot format 
 class DotDict(dict):
 	__getattr__ = dict.get
 	__setattr__ = dict.__setitem__
@@ -57,7 +58,10 @@ class DotDict(dict):
 
 
 def envar_type_checks(item, var_name,  expected_type, expected_range=None, allowed_values=None):
-	
+     """
+      Validate envronment variables
+      
+     """
      try:
 
         if expected_type == int:
@@ -81,7 +85,7 @@ def envar_type_checks(item, var_name,  expected_type, expected_range=None, allow
      return item
 	
 
-
+##save params that run the app in this class
 class InferenceModelParams():
     def __init__(self):
         self.debug                       = os.environ["DEBUG"]
@@ -351,18 +355,18 @@ class InferenceModelParams():
 			
         self.ct                = 0 # frame count init 
         
-        #Ground truth values        
+        #Ground truth values for data collection during inference    
         
-        self.gt_gesture        = None    #closed, pointer
-        self.gt_side           = None    #left, right, hand 
+        self.gt_gesture        = None    # e.g. palm
+        self.gt_side           = None    #left, right hand 
         self.gt_orient         = None    #"facing_in" "facing_out" facing_in means palm_side towards screen
         
         
-        self.exp_collect_data = False #TODO: remove
+        self.exp_collect_data = False 
         if self.exp_action is None  and self.exp_collect_data:
           raise ValueError("exp_action is required for experimental data collection")
 
-        #DataFrame for data collection :TODO - Remove
+        #DataFrame for data collection  extra data collection
         self.df        = None
         ts             = time.time_ns()
         self.file_path = f"data/exp_data/{self.exp_action}_{self.gt_side}_{self.gt_gesture}_{self.gt_orient}_data_started{ts}.csv"
@@ -412,7 +416,7 @@ class InferenceModelParams():
 
 
         
-    #Data
+    # Extra Data Collection. No Needed Function
     def collect_landmark_data( self, frame_count, data):
 								
         new_ts    = { "time_ns": [time.time_ns()]}
