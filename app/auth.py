@@ -35,6 +35,9 @@ password_hash = PasswordHash.recommended()
 
 
 async def get_user(db: AsyncSession , username: str):
+	"""
+        query user info from database
+	"""
 	query = select(UserDB).where(UserDB.username == username)
 	result = await db.execute(query)
 	user : UserDB  | None = result.scalar_one_or_none()
@@ -42,7 +45,9 @@ async def get_user(db: AsyncSession , username: str):
 	
 
 async def create_user(db: AsyncSession, username : str , password : str):
-
+    """
+    create a user and save in db table
+    """"
     hashed_password = password_hash.hash(password)
     db_user = UserDB(username=username, hashed_password=hashed_password, access_level="GENERAL")
     db.add(db_user)
@@ -51,12 +56,18 @@ async def create_user(db: AsyncSession, username : str , password : str):
     return db_user
 
 async def store_access_token(db: AsyncSession, token: str, expires_at: datetime, user: UserDB):
+    """
+    Save Access Token in Users DB
+    """
     db_token = AccessTokenDB(token=token, expires_at=expires_at, user=user)
     db.add(db_token)
     await db.commit()
     return db_token
     
 async def check_admin(db : AsyncSession , password : str = None):
+    """
+    Check if an admin user exists 
+    """
     query = select(AccessTokenDB).where(AccessTokenDB.username == 'admin'
                                        ).limit(1)
                                                                       
@@ -73,6 +84,9 @@ async def check_admin(db : AsyncSession , password : str = None):
 	   
     
 async def validate_access_token(token : str , db: AsyncSession):
+    """
+    Check access token's validity
+    """
     query = select(AccessTokenDB).where(AccessTokenDB.token == token, 
                                         AccessTokenDB.expires_at > datetime.utcnow()
                                        ).limit(1)
@@ -85,6 +99,9 @@ async def validate_access_token(token : str , db: AsyncSession):
     return db_token
 
 async def delete_access_token(token : str,  db: AsyncSession):
+     """
+     delete an access token , used to invalidate session 
+     """
      query    =  delete(AccessTokenDB).where(AccessTokenDB.token== token )
      result   =  await db.execute(query)    
      await db.commit()
@@ -93,10 +110,15 @@ async def delete_access_token(token : str,  db: AsyncSession):
 
 # Authentication helper functions
 async def verify_password(plain_password, hashed_password):
-   
+    """
+    Verify password
+    """
     return password_hash.verify(plain_password, hashed_password) 
 
 async def authenticate_user(db: AsyncSession, username: str, password: str):
+    """
+     Authenticate a user at login
+    """
     user = await get_user(db, username)
     password_verif = None
     if user is not None:
@@ -106,6 +128,9 @@ async def authenticate_user(db: AsyncSession, username: str, password: str):
     return user
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    """
+    Create an access token 
+    """
     to_encode = data.copy()
     expire = datetime.utcnow() + (expires_delta or timedelta(minutes=1440))
     to_encode.update({"exp": expire})
@@ -116,7 +141,9 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 
 
 async def get_current_user(access_token : str, username :str,  db : AsyncSession):
-
+    """
+     Get current user
+    """
     db_token= await validate_access_token(access_token, db)
                                                                                                
     if db_token is None : 
@@ -129,7 +156,9 @@ async def get_current_user(access_token : str, username :str,  db : AsyncSession
     return None
     
 async def validate_current_user(access_token : str , username :str, db : AsyncSession):
- 
+    """
+     Validate the current user
+    """
     user = None
     if access_token:
         access_token = access_token.replace("bearer ","").strip()
